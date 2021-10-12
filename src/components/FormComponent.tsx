@@ -28,13 +28,13 @@ const FormComponent = () => {
                 mode="inline"
                 className="rounded-md"
                 >
-                    <SubMenu key="sub1"  title="Navigation One" className="shadow-2xl">
+                    <SubMenu key="sub1"  title="Navigation One" className="shadow-top">
                         <Menu.Item key="1">Option 1</Menu.Item>
                         <Menu.Item key="2">Option 2</Menu.Item>
                         <Menu.Item key="3">Option 3</Menu.Item>
                         <Menu.Item key="4">Option 4</Menu.Item>
                     </SubMenu>
-                    <SubMenu key="sub2" title="Navigation Two" className="shadow-2xl">
+                    <SubMenu key="sub2" title="Navigation Two" className="shadow-top">
                         <Menu.Item key="5">Option 5</Menu.Item>
                         <Menu.Item key="6">Option 6</Menu.Item>
                         <SubMenu key="sub3" title="Submenu">
@@ -42,7 +42,7 @@ const FormComponent = () => {
                         <Menu.Item key="8">Option 8</Menu.Item>
                         </SubMenu>
                     </SubMenu>
-                    <SubMenu key="sub4" title="Navigation Three" className="shadow-2xl">
+                    <SubMenu key="sub4" title="Navigation Three" className="shadow-top">
                         {/* <Menu.Item key="9">Option 9</Menu.Item>
                         <Menu.Item key="10">Option 10</Menu.Item>
                         <Menu.Item key="11">Option 11</Menu.Item>
@@ -58,8 +58,8 @@ const FormComponent = () => {
 
                             <div className="sm:flex sm:space-x-4 w-full">
                                 <label htmlFor="" className="text-right w-full sm:w-1/3 ">Product:</label><br />
-                                <Form.Item  name="product" className="w-full sm:w-1/2"  rules={[{required : true}]}>
-                                    <Select className="w-full sm:w-1/2 border    border-black" 
+                                <Form.Item  name="product" className="w-full sm:w-1/2 rounded-2xl"  rules={[{required : true}]}>
+                                    <Select className="w-full sm:w-1/2 rounded-2xl" 
                                     placeholder="Select a Product"  
                                     >
                                         <Option value="product 1">Product 1</Option>
@@ -94,7 +94,7 @@ const FormComponent = () => {
                                 </Select></Form.Item>
                             </div>
 
-                            <div className="sm:flex sm:space-x-4 w-full ">
+                            <div className="sm:flex sm:space-x-4 w-full">
                                  <label htmlFor="" className="text-right w-1/3">Flavor:</label>
                                  <Form.Item name="flavor" className="w-full sm:w-1/2">
                                 <Select className="w-full sm:w-1/2 border border-black"
@@ -123,7 +123,7 @@ const FormComponent = () => {
                               
                             <div className="sm:flex sm:space-x-4 w-full">
                             <label htmlFor="" className="text-right w-1/3">Directions:</label><br />
-                                <div className="flex border w-full sm:w-1/2 mb-5 border border-black">
+                                <div className="flex  w-full sm:w-1/2 mb-5 border border-black">
                                 <Form.Item name="direction" className="w-full h-2 sm:w-1/2">
                                     <Select className="w-44 sm:w-28 border-r border-black"
                                     placeholder="Directions"
