@@ -15,12 +15,7 @@ const FormComponent = () => {
     }
     console.log(formDetails);
 
-    const handlePrint = (value) => {
-        // console.log(value);
-        console.log(print);
-        setPrint(!print)
-    }
-
+   
     return (
         <div className="container mx-auto mt-10">
             <div className="m-4 p-4 shadow-lg rounded-xl ">
