@@ -1,21 +1,23 @@
-import { Dropdown, Menu , Button , Select ,DatePicker} from 'antd'
+import { Dropdown, Menu , Button , Form, Select ,DatePicker} from 'antd'
 import {CaretDownOutlined} from '@ant-design/icons';
+import { useState } from 'react';
 const {Option} = Select;
 
-const Form = () => {
-    const menu = (
-        <Menu >
-          <Menu.Item key="1" >
-            1st menu item
-          </Menu.Item>
-          <Menu.Item key="2" >
-            2nd menu item
-          </Menu.Item>
-          <Menu.Item key="3" >
-            3rd menu item
-          </Menu.Item>
-        </Menu>
-      );
+const FormComponent = () => {
+    const [formDetails , setFormDetails] = useState({});
+
+    // const handleChange = (field, value) =>{
+    //     // setFormDetails({
+    //     //     [] : value
+    //     // })
+    //     console.log(field ,value);
+
+    // }
+    const handleFinish = (values) => {
+        console.log(values);
+        
+    }
+
     return (
         <div className="container mx-auto mt-10">
             <div className="m-4 p-4 shadow-lg rounded-xl ">
@@ -24,25 +26,42 @@ const Form = () => {
                     <p className="text-center text-xl  sm:text-3xl font-bold bg-blue-200 my-2 py-4 shadow-sm rounded-lg">This is Heading</p>
                 </div>
 
-                {/* form */}
+                
                 <div className="sm:flex sm:w-full justify-between sm:space-x-4 my-4 capitalize">
                     <div className="shadow-xl p-4 w-full rounded-lg border">
                         <p className="text-xl font-semibold p-4">Prescription</p>
-                        <div className=" text-lg font-semibold ">
+                        <div className=" text-lg font-semibold p-4 sm:p-0">
                             {/* <div className="grid-cols-2 gap-3"> */}
-                            <div className="sm:flex space-x-4 w-full">
-                                <label htmlFor="" className="text-left sm:text-right w-1/3 ">Product:</label><br />
-                                <Select className="sm:w-1/2"
+                           
+                            <Form onFinish={handleFinish}>
+                            <div className="sm:flex sm:space-x-4 w-full">
+                                <Form.Item  name="product">
+                                <label htmlFor="" className="text-right w-full sm:w-1/3 ">Product:</label><br />
+                                <Select name="product" className="w-full sm:w-1/2" 
+                                placeholder="Select a Product" 
+                                >
+                                    <Option value="jack">Jack</Option>
+                                    <Option value="lucy">Lucy</Option>
+                                    <Option value="tom">Tom</Option>
+                                </Select>
+                                </Form.Item>
+                            </div>
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
+                                <Form.Item name="from">
+                                <label htmlFor="" className="text-right w-1/3">From:</label> <br />
+                                <Select className="w-full sm:w-1/2" 
                                 placeholder="Select a Product"
                                 >
                                     <Option value="jack">Jack</Option>
                                     <Option value="lucy">Lucy</Option>
                                     <Option value="tom">Tom</Option>
                                 </Select>
+                                </Form.Item>
                             </div>
-                            <div className="flex space-x-4 w-full mt-3">
-                                <label htmlFor="" className="text-right w-1/3">From:</label>
-                                <Select className="w-1/2"
+
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
+                            <label htmlFor="" className="text-right w-1/3">Strength:</label><br/>
+                                <Select className="w-full sm:w-1/2"
                                 placeholder="Select a Product"
                                 >
                                     <Option value="jack">Jack</Option>
@@ -51,20 +70,9 @@ const Form = () => {
                                 </Select>
                             </div>
 
-                            <div className="flex space-x-4 w-full mt-3">
-                            <label htmlFor="" className="text-right w-1/3">Strength:</label>
-                                <Select className="w-1/2"
-                                placeholder="Select a Product"
-                                >
-                                    <Option value="jack">Jack</Option>
-                                    <Option value="lucy">Lucy</Option>
-                                    <Option value="tom">Tom</Option>
-                                </Select>
-                            </div>
-
-                            <div className="flex space-x-4 w-full mt-3">
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
                                  <label htmlFor="" className="text-right w-1/3">Flavor:</label>
-                                <Select className="w-1/2"
+                                <Select className="w-full sm:w-1/2"
                                 placeholder="Select a Product"
                                 >
                                     <Option value="jack">Jack</Option>
@@ -73,9 +81,9 @@ const Form = () => {
                                 </Select>
                             </div>        
                             
-                            <div className="flex space-x-4 w-full mt-3">
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
                             <label htmlFor="" className="text-right w-1/3">Units Per Fill:</label>
-                                <Select className="w-1/2"
+                                <Select className="w-full sm:w-1/2"
                                 placeholder="Select a Product"
                                 >
                                     <Option value="jack">Jack</Option>
@@ -84,10 +92,10 @@ const Form = () => {
                                 </Select>
                             </div>
                               
-                            <div className="flex space-x-4 w-full mt-3">
-                            <label htmlFor="" className="text-right w-1/3">Directions:</label>
-                                <div className="flex border w-1/2">
-                                    <Select className="w-28"
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
+                            <label htmlFor="" className="text-right w-1/3">Directions:</label><br />
+                                <div className="flex border w-full sm:w-1/2">
+                                    <Select className="w-44 sm:w-28"
                                     placeholder="Directions"
                                     >
                                         <Option value="jack">Jack</Option>
@@ -98,9 +106,9 @@ const Form = () => {
                                 </div>
                             </div>
                                
-                            <div className="flex space-x-4 w-full mt-3">
-                            <label htmlFor="" className="text-right w-1/3">Days Supply:</label>
-                                <Select className="w-1/2"
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
+                            <label htmlFor="" className="text-right w-1/3">Days Supply:</label><br />
+                                <Select className="w-full sm:w-1/2"
                                 placeholder="Select a Product"
                                 >
                                     <Option value="jack">Jack</Option>
@@ -109,9 +117,9 @@ const Form = () => {
                                 </Select>
                             </div>
                                 
-                            <div className="flex space-x-4 w-full mt-3">
-                            <label htmlFor="" className="text-right w-1/3">Refills:</label>
-                                <Select className="w-1/2"
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
+                            <label htmlFor="" className="text-right w-1/3">Refills:</label><br />
+                                <Select className="w-full sm:w-1/2"
                                 placeholder="Select a Product"
                                 >
                                     <Option value="jack">Jack</Option>
@@ -120,15 +128,15 @@ const Form = () => {
                                 </Select>
                             </div>
 
-                            <div className="flex space-x-4 w-full mt-3">
-                            <label htmlFor="" className="text-right w-1/3">Expiration:</label>
-                                <DatePicker className="w-1/2" />
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
+                            <label htmlFor="" className="text-right w-1/3">Expiration:</label><br/>
+                                <DatePicker className="w-full sm:w-1/2" />
                             </div>
 
-                            <div className="flex space-x-4 w-full mt-3">
-                            <label htmlFor="" className="text-right w-1/3">Client Notification:</label>
-                                <div className="flex border w-1/2">
-                                    <Select className="w-28"
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
+                            <label htmlFor="" className="text-right w-1/3">Client Notification:</label><br />
+                                <div className="flex border w-full sm:w-1/2">
+                                    <Select className="w-44 sm:w-28"
                                     placeholder="Today"
                                     >
                                         <Option value="jack">Jack</Option>
@@ -139,9 +147,9 @@ const Form = () => {
                                 </div>
                             </div>   
 
-                                <div className="flex space-x-4 w-full mt-3">
-                                    <label htmlFor="" className="text-right w-1/3">AutoShip Promt :</label>
-                                    <Select className="w-1/2"
+                                <div className="sm:flex sm:space-x-4 w-full mt-3">
+                                    <label htmlFor="" className="text-right w-1/3">AutoShip Promt :</label><br />
+                                    <Select className="w-full sm:w-1/2"
                                     placeholder="Select a Product"
                                     >
                                         <Option value="jack">Yes</Option>
@@ -150,10 +158,10 @@ const Form = () => {
                                 </div>
                                  
                                 
-                                <div className="flex space-x-4 w-full mt-3">
+                                <div className="sm:flex sm:space-x-4 w-full mt-3">
                                 <label htmlFor="" className="text-right w-1/3">Note to Pharmacy:</label>
-                                <div className="flex border w-1/2">
-                                    <Select className="w-28"
+                                <div className="flex border w-full sm:w-1/2">
+                                    <Select className=" w-44 sm:w-28"
                                     placeholder="Directions"
                                     >
                                         <Option value="jack">Jack</Option>
@@ -165,10 +173,10 @@ const Form = () => {
                                 </div>
 
                                 
-                            <div className="flex space-x-4 w-full mt-3">
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
                             <label htmlFor="" className="text-right w-1/3">Note to Client:</label>
-                                <div className="flex border w-1/2">
-                                    <Select className="w-28"
+                                <div className="flex border w-full sm:w-1/2">
+                                    <Select className="w-44 sm:w-28"
                                     placeholder="Directions"
                                     >
                                         <Option value="jack">Jack</Option>
@@ -179,23 +187,23 @@ const Form = () => {
                                 </div>
                             </div>
                                 
-                            <div className="flex space-x-4 w-full mt-3">
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
                             <label htmlFor="" className="text-right w-1/3">Authorizing Vet:</label>
-                                <div className="w-1/2">
+                                <div className="w-full sm:w-1/2">
                                 <Select className="w-full"
                                 placeholder="Select a Product"
                                 >
                                     <Option value="jack">Yes</Option>
                                     <Option value="lucy">No</Option>
                                 </Select>
-                                <p className="text-xs tracking-tighter">This is my eSignature and implies i have valid VCPR as definedbt the AVMA.</p>
+                                <p className="text-xs tracking-tighter text-right">This is my eSignature and implies i have valid VCPR as definedbt the AVMA.</p>
                                 </div>
                             </div>
 
-                            <div className="flex space-x-4 w-full mt-3">
+                            <div className="sm:flex sm:space-x-4 w-full mt-3">
                             <label htmlFor="" className="text-right w-1/3"></label>
-                                <div className="w-1/2">
-                                    <div className="flex items-center">
+                                <div className="w-full sm:w-1/2 ">
+                                    <div className="flex items-center justify-end">
                                         <p className="mb-0">Print Rx Details after Authorizing</p>
                                         <div className="border bg-green-800 text-white text-xl text-center font-bold w-6 h-6 ml-2"><i className="fas fa-check"></i></div> 
                                     </div>
@@ -204,16 +212,16 @@ const Form = () => {
                             </div>
 
                             <div className="flex space-x-4 w-full mt-3">
-                            <label htmlFor="" className="text-right w-1/3 hidden sm:block"></label>
-                                <div className="sm:w-1/2">
-                                    <div className="text-center sm:flex sm:justify-end sm:space-x-6">
-                                        <button className="rounded-full py-1 border-2 border-black text-black text-center px-5 ">Save Draft</button>
-                                        <button className="rounded-full py-1 border-2 border-black bg-black text-white text-center px-5  mt-3 sm:mt-0">Authorize</button>
+                            <label htmlFor="" className="text-right w-1/3 hidden sm:block"></label><br />
+                                <div className="w-full sm:w-1/2 ">
+                                    <div className="text-center flex justify-end  space-x-6">
+                                        <Button htmlType="submit" className="rounded-full py-1 border-2 border-black text-black text-center px-5 ">Save Draft</Button>
+                                        <Button className="rounded-full py-1 border-2 border-black bg-black text-white text-center px-5">Authorize</Button>
                                     </div>
                                 </div>
                             </div>
-                                
-
+                            
+                        </Form>
                         </div>
                     </div>
                    
@@ -279,4 +287,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default FormComponent
