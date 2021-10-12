@@ -1,9 +1,11 @@
-import { Input , Button , Form, Select ,DatePicker} from 'antd'
-// import {CaretDownOutlined} from '@ant-design/icons';
+import { Menu , Input , Button , Checkbox , Form, Select ,DatePicker} from 'antd'
+// import {MailOutlined ,AppstoreOutlined , SettingOutlined} from '@ant-design/icons';
 import { useState } from 'react';
 const {Option} = Select;
+const {SubMenu} = Menu;
 
 const FormComponent = () => {
+
     const [formDetails , setFormDetails] = useState({});
     const [print , setPrint] = useState(false);
 
@@ -12,7 +14,7 @@ const FormComponent = () => {
         setFormDetails(values)
     }
     console.log(formDetails);
-    
+
     const handlePrint = (value) => {
         // console.log(value);
         console.log(print);
@@ -26,7 +28,31 @@ const FormComponent = () => {
                 <div>
                     <p className="text-center text-xl  sm:text-3xl font-bold bg-blue-200 my-2 py-4 shadow-sm rounded-lg">This is Heading</p>
                 </div>
-
+                <Menu  
+                defaultOpenKeys={['sub4']} 
+                mode="inline"
+                className="rounded-md"
+                >
+                    <SubMenu key="sub1"  title="Navigation One" className="shadow-2xl">
+                        <Menu.Item key="1">Option 1</Menu.Item>
+                        <Menu.Item key="2">Option 2</Menu.Item>
+                        <Menu.Item key="3">Option 3</Menu.Item>
+                        <Menu.Item key="4">Option 4</Menu.Item>
+                    </SubMenu>
+                    <SubMenu key="sub2" title="Navigation Two" className="shadow-2xl">
+                        <Menu.Item key="5">Option 5</Menu.Item>
+                        <Menu.Item key="6">Option 6</Menu.Item>
+                        <SubMenu key="sub3" title="Submenu">
+                        <Menu.Item key="7">Option 7</Menu.Item>
+                        <Menu.Item key="8">Option 8</Menu.Item>
+                        </SubMenu>
+                    </SubMenu>
+                    <SubMenu key="sub4" title="Navigation Three" className="shadow-2xl">
+                        {/* <Menu.Item key="9">Option 9</Menu.Item>
+                        <Menu.Item key="10">Option 10</Menu.Item>
+                        <Menu.Item key="11">Option 11</Menu.Item>
+                        <Menu.Item key="12">Option 12</Menu.Item> */}
+                    
                 
                 <div className="sm:flex sm:w-full justify-between sm:space-x-4 my-4 capitalize">
                     <div className="shadow-xl p-4 w-full rounded-lg border">
@@ -38,7 +64,7 @@ const FormComponent = () => {
                             <div className="sm:flex sm:space-x-4 w-full">
                                 <label htmlFor="" className="text-right w-full sm:w-1/3 ">Product:</label><br />
                                 <Form.Item  name="product" className="w-full sm:w-1/2"  rules={[{required : true}]}>
-                                    <Select className="w-full sm:w-1/2 border border-black" 
+                                    <Select className="w-full sm:w-1/2 border    border-black" 
                                     placeholder="Select a Product"  
                                     >
                                         <Option value="product 1">Product 1</Option>
@@ -237,8 +263,10 @@ const FormComponent = () => {
                             <label htmlFor="" className="text-right w-1/3"></label>
                                 <div className="w-full sm:w-1/2 ">
                                     <div className="flex items-center justify-end">
-                                        <p className="mb-0">Print Rx Details after Authorizing</p>
-                                        <div onClick={handlePrint} className="border bg-green-800 text-white text-xl text-center font-bold w-6 h-6 ml-2">{ print && <i className="fas fa-check"></i>}</div> 
+                                        {/* <p className="mb-0">Print Rx Details after Authorizing</p> */}
+                                        <Form.Item label="Print Rx Details after Authorizing" name="printRxDetails" valuePropName="checked" className="flex items-center align-middle">
+                                        <Checkbox />
+                                        </Form.Item>
                                     </div>
                                 </div>
 
@@ -261,9 +289,9 @@ const FormComponent = () => {
                     <div className="shadow-xl p-4 w-full sm:w-2/3 rounded-lg border my-4 sm:my-0">
                         <p className="text-xl font-semibold">Product Details</p>
                         <div className="">
-                            <p className="uppercase text-md font-semibold mb-0">Methocarbamol</p>
-                            <p className="uppercase text-md leading-none mb-0">oral suspension</p>
-                            <p className="uppercase text-sm mb-0">100mg/ml</p>
+                            <p className="uppercase text-md font-semibold">Methocarbamol</p>
+                            <p className="uppercase text-md">oral suspension</p>
+                            <p className="uppercase text-sm">100mg/ml</p>
                         </div>
                         <div className="flex my-8 space-x-4">
                             <div className="w-28 h-28 shadow-2xl rounded-lg"><img src="/medicine.jpg" className="w-28 h-28 rounded-lg" alt="" /></div>   
@@ -314,7 +342,8 @@ const FormComponent = () => {
 
                     </div>
                 </div>
-
+                  </SubMenu>          
+            </Menu>
             </div>
         </div>
     )
